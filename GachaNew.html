@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gacha Gavin</title>
+  <style>
+      body {
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 50px 20px;
+    color: #333;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #444;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  button {
+    background-color: #ff7675;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  button:hover {
+    background-color: #d63031;
+    transform: scale(1.05);
+  }
+
+  #result-text {
+    margin-top: 30px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2d3436;
+  }
+
+  #result-image {
+    margin-top: 20px;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+  }
+
+  #result-image:hover {
+    transform: scale(1.03);
+  }
+
+  </style>
+</head>
+<body>
+  <h1>Gacha Spin</h1>
+  <h1>Let's see what you get bud</h1>
+  <h2>Warning: some image can be late when loading. Spin more because you can have same spin</h2>
+  <button onclick="spin()">Spin!</button>
+  <h2 id="result-text"></h2>
+  <img id="result-image" src="" alt="" />
+
+  <script>
+    const rewards = [
+      {
+        name: "i'm Gawk-vin variant",
+        image: "https://i.imgur.com/DaNGYiq.jpeg", // Ganti dengan link langsung
+        weight: 30,
+      },
+      {
+        name: "I'm Relax Gavin variant",
+        image: "https://i.imgur.com/nRjgSQV.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "i'm hooaaaa(open mouth) Gavin variant",
+        image: "https://i.imgur.com/zJ08M5J.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "i'm sliding",
+        image: "https://i.imgur.com/laca1Z8.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "i'm very cute",
+        image: "https://i.imgur.com/1ZY5KpN.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "lemme hit",
+        image: "https://i.imgur.com/iU92z6c.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "Death's Face (gonna reveal if he had guts)",
+        image: "https://i.imgur.com/SoYhTBd.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "Dith-manthel",
+        image: "https://i.imgur.com/clUx9cJ.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "Gothic Gavin",
+        image: "https://i.imgur.com/2ZV2aU8.jpeg", // contoh
+        weight: 30,
+      },
+      {
+        name: "AYYOOOO SKIP! SKIP! IT'S NOT WHAT IT LOOKS LIKE",
+        image: "https://i.imgur.com/W2QISR0.jpeg", // contoh
+        weight: 30,
+      },
+    ];
+
+    function spin() {
+      const totalWeight = rewards.reduce((sum, r) => sum + r.weight, 0);
+      const rand = Math.random() * totalWeight;
+      let accum = 0;
+      let result;
+
+      for (let reward of rewards) {
+        accum += reward.weight;
+        if (rand <= accum) {
+          result = reward;
+          break;
+        }
+      }
+
+      document.getElementById("result-text").innerText = result.name;
+      document.getElementById("result-image").src = result.image;
+    }
+  </script>
+</body>
+</html>
